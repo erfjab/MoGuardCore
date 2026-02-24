@@ -42,7 +42,6 @@ class Node(Base):
     script_secret: Mapped[Optional[str]] = mapped_column(String(256), nullable=True)
     script_url: Mapped[Optional[str]] = mapped_column(String(512), nullable=True)
     show_configs: Mapped[Optional[bool]] = mapped_column(Boolean, default=True, nullable=True)
-    rate_display: Mapped[Optional[str]] = mapped_column(String(32), nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(), default=datetime.utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -155,7 +154,6 @@ class Node(Base):
             script_url=data.script_url,
             script_secret=data.script_secret,
             show_configs=data.show_configs,
-            rate_display=data.rate_display,
         )
         db.add(node)
         if access:
@@ -218,8 +216,6 @@ class Node(Base):
             node.script_url = data.script_url
         if data.script_secret is not None:
             node.script_secret = data.script_secret
-        if data.rate_display is not None:
-            node.rate_display = data.rate_display
         if data.show_configs is not None:
             node.show_configs = data.show_configs
         await db.flush()

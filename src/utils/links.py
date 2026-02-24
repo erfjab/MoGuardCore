@@ -49,7 +49,7 @@ class LinkGeneration:
         format_vars["server_id"] = str(node.id).zfill(2)
         format_vars["server_emoji"] = emoji
         format_vars["server_name"] = server_name
-        format_vars["server_usage"] = node.rate_display or ""
+        format_vars["server_usage"] = node.usage_rate or "1.0"
 
         formatted = config_rename.format(**format_vars)
         return re.sub(r"\s{2,}", " ", formatted).strip()
