@@ -26,7 +26,6 @@ class NodeResponse(BaseModel):
     script_url: str | None
     script_secret: str | None
     show_configs: bool | None
-    rate_display: str | None
     created_at: datetime
     updated_at: datetime
 
@@ -47,7 +46,6 @@ class NodeCreate(BaseModel):
     script_secret: str | None = None
     usage_rate: float = 1.0
     show_configs: bool = True
-    rate_display: str | None = None
 
 
 class NodeUpdate(BaseModel):
@@ -62,7 +60,6 @@ class NodeUpdate(BaseModel):
     script_url: str | None = None
     script_secret: str | None = None
     show_configs: bool | None = None
-    rate_display: str | None = None
 
 
 class NodeStatsResponse(BaseModel):
