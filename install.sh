@@ -6,7 +6,7 @@ SCRIPT_NAME="moguardcore"
 DEFAULT_BRANCH="master"
 INSTALL_BASE_DIR="/opt/erfjab/${SCRIPT_NAME}"
 REPO_URL="https://github.com/${USERNAME}/${SCRIPT_NAME}.git"
-GITHUB_TOKEN="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"
+GITHUB_TOKEN="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"
 REPO_URL_WITH_TOKEN="https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${USERNAME}/${SCRIPT_NAME}.git"
 
 ### Logging functions
