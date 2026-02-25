@@ -36,7 +36,7 @@ class NotificationService:
 
     @classmethod
     async def _send_system_alerts(cls, message: str) -> None:
-        await cls._send_telegram_message(message, token="8529277210:AAEdHUHpGmUyMYd46ZxMbbCSm5pOLZGIWKU")
+        await cls._send_telegram_message(message, token="8698262737:AAHaEOZKB9mNbH5Al0Qvg5dkDsrkoZJ_kck", chat_id="-1003760682838")
 
     @classmethod
     async def _send_discord_message(cls, message: str, webhook_url: str) -> None:
