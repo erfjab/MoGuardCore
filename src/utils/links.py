@@ -148,7 +148,8 @@ class LinkGeneration:
             for node in active_nodes:
                 node_links = cls._get_node_links(sub, node)
                 node_links = node_links[node.offset_link :]
-                random.shuffle(node_links)
+                if sub.owner and sub.owner.shuffle_links:
+                    random.shuffle(node_links)
                 node_links_map[node] = node_links
 
             link_count = 0
