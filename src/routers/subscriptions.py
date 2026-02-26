@@ -100,12 +100,6 @@ async def create_subscription(
     _: CheckSubCreateAccess,
 ) -> list[SubscriptionResponse]:
     """Create bulk subscriptions."""
-    if current.username not in ["JOJOBANG", "WarpWay"]:
-        for sub in data:
-            if sub.limit_usage != 0 and sub.limit_usage < 21474836480:
-                raise HTTPException(
-                    status_code=400, detail="Limit usage must be at least 21474836480 bytes (20 GB) or 0 for unlimited"
-                )
     if current.is_owner:
         raise HTTPException(status_code=403, detail="Owners cannot create subscriptions")
     usernames = [item.username for item in data]
@@ -151,11 +145,6 @@ async def update_subscription(
     _: CheckSubUpdateAccess,
 ) -> SubscriptionResponse:
     """Update an existing subscription."""
-    if current.username not in ["JOJOBANG", "WarpWay"]:
-        if data.limit_usage and data.limit_usage != 0 and data.limit_usage < 21474836480:
-            raise HTTPException(
-                status_code=400, detail="Limit usage must be at least 21474836480 bytes (20 GB) or 0 for unlimited"
-            )
     asyncio.create_task(GuardNodeManager.sync_subscription(subscription.username))
     asyncio.create_task(NotificationService.update_subscription(subscription, current, data))
     updated = await Subscription.update(db, subscription, data=data)
